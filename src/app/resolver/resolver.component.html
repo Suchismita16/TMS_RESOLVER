@@ -1,0 +1,17 @@
+<table border="2">
+    <tr>
+        <th>TICKETID</th>
+        <th *ngFor = "let field of attributes">
+            {{field}}
+        </th>
+    </tr>
+
+    <tr *ngFor = "let t of tickets">
+        <td><a [routerLink]="['/ticket-status',t.tid]">{{t.tid}}</a></td>
+
+        <td *ngFor = "let field of attributes">
+            {{t[field]}}
+        </td>
+    </tr>
+</table>
+<!-- <router-outlet></router-outlet> -->

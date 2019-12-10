@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+<p *ngFor = "let a of genAttributes">
+    {{a}} : {{ticket[a]}}
+</p>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+    <th *ngFor="let sfield of statusAttributes">
+        {{sfield}}</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let log of logs">
+                <td *ngFor="let sfield of statusAttributes">
+                   {{log[sfield]}}
+                </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div class="col-md-6">
+        <button type="button" class="btn btn-primary btn-space" (click) = "Dropdown()">Change Status</button>
+        <button type="button" class="btn btn-primary" (click) = "Notes()">Add Notes</button><br/><br/><br/>
+        <select *ngIf = "isShowDropdown" (change)="selectedStatus($event)" name="status" class = "btn-space" >
+            <option value="none" selected disabled hidden>Options</option>
+            <option value = "InProgress">InProgress</option>
+            <option value="Completed">Completed</option>
+        </select>
+        
+        <input [(ngModel)] = "notes" *ngIf = "isShowNote" type="text" name="noteByRes" class="btn-space">
+        <button *ngIf = "isShowDropdown || isShowNote" class="btn btn-success" (click) = "StsNoteUpdate()">Update</button>
+</div>
+</div>
+</div>
+
+
+<!-- <div *ngFor = "let l of logs">
+            
+        <p>{{l.status}}</p>
+         <td *ngFor="let sfield of statusAttributes">{{l[i][sfield]}}</td>
+</div> -->
